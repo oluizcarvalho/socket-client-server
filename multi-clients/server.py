@@ -22,26 +22,17 @@ def on_new_client(clientsocket, addr):
 
 def server_program():
     host = socket.gethostname()
-    port = 12347
+    port = 12346
 
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.bind((host, port))
-    print("socket binded to %s" % port)
 
-    server_socket.listen(5)
-    print("socket is listening")
-
+    server_socket.listen(2)
     while True:
         conn, address = server_socket.accept()
         print("Connection from: " + str(address))
         minha_thread = threading.Thread(target=on_new_client, args=(conn, address))
         minha_thread.start()
-        minha_thread.join()
-        ans = input('\nDo you want to continue(y/n) :')
-        if ans == 'y':
-            continue
-        else:
-            break
     conn.close()
 
 

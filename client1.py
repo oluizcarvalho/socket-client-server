@@ -3,7 +3,7 @@ import socket
 
 def client_program():
     host = socket.gethostname()
-    port = 12347
+    port = 12346
 
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((host, port))
